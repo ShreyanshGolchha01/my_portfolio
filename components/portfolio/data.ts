@@ -2,6 +2,7 @@ export type SocialLink = {
   label: string;
   href: string;
   external?: boolean;
+  copyValue?: string;
 };
 
 export type Project = {
@@ -38,133 +39,105 @@ export type SkillGroup = {
 export const profileLinks: SocialLink[] = [
   {
     label: "github",
-    href: "https://github.com/Aditya-1304",
+    href: "https://github.com/ShreyanshGolchha01",
     external: true,
   },
   {
     label: "linkedin",
-    href: "https://www.linkedin.com/in/aditya-mandal1304/",
+    href: "https://www.linkedin.com/in/shreyansh-golchha-04113816b/",
     external: true,
   },
   {
     label: "x",
-    href: "https://x.com/AdityaMandal_",
+    href: "https://x.com/ShreyanshGolch5",
     external: true,
   },
   {
     label: "email",
-    href: "mailto:mandaladitya1614@gmail.com",
+    href: "mailto:shreyanshgolchha1112@gmail.com",
   },
 ];
 
 export const projects: Project[] = [
   {
-    title: "Laminar",
-    href: "https://github.com/Aditya-1304/Laminar",
-    date: "Jan 2026 - Present",
-    stack: ["Rust", "Anchor", "TypeScript", "Pyth SDK"],
+    title: "SkillBridge",
+    href: "#",
+    date: "Jan 2026 - Ongoing",
+    stack: ["React", "Node.js", "MongoDB", "Express.js"],
     summary:
-      "Non-liquidatable leverage protocol on Solana built around tranche-based risk accounting.",
+      "A web platform connecting students and companies through freelance and internship opportunities.",
     points: [
-      "Deterministic solvency engine with strict fixed-point math and invariant checks.",
-      "Stability pool design for atomic debt-for-equity swaps in tail-risk scenarios.",
+      "Built a full-stack MERN application where students apply for roles and companies post requirements.",
+      "Implemented authentication, role-based access (student/company), and college-focused listings.",
     ],
   },
   {
-    title: "x402-Flash",
-    href: "https://github.com/Aditya-1304/x402-flash",
-    date: "Oct 2025 - Nov 2025",
-    stack: ["Solana", "Anchor", "Rust", "TypeScript", "Redis"],
+    title: "Green Palna",
+    href: "https://gpy.ssipmt.in/admin/login",
+    date: "Apr 2025 - Jul 2025",
+    stack: ["Node.js", "Express.js", "Flutter", "SQL"],
     summary:
-      "Micropayment protocol for AI-agent transactions using HTTP 402 and WebSocket flow.",
+      "A government-focused platform promoting plantation awareness and environmental sustainability.",
     points: [
-      "Hybrid settlement engine with Redis-backed voucher validation.",
-      "Oracle-assisted dynamic fee strategy for reliable high-throughput settlement.",
+      "Developed participation and tracking flows for tree-plantation and structured green initiatives.",
+      "Implemented user engagement, data tracking, and awareness campaign features.",
     ],
   },
   {
-    title: "AdiChess Engine",
-    href: "https://github.com/Aditya-1304/chess_engine",
-    date: "2025 - Present",
-    stack: ["Rust", "UCI", "NNUE", "Alpha-Beta", "Lazy SMP"],
+    title: "TiffinHub",
+    href: "https://tiffinhub.live",
+    date: "Aug 2025 - Ongoing",
+    stack: ["Node.js", "Flutter", "React", "MongoDB"],
     summary:
-      "UCI-compatible Rust chess engine focused on strong search depth and efficient evaluation.",
+      "A full-stack app for PG students to track and manage daily tiffin usage efficiently.",
     points: [
-      "Implements PVS, Null Move Pruning, and LMR with a lock-less transposition table.",
-      "Uses HalfKP NNUE evaluation and multi-threaded Lazy SMP for stronger practical play.",
+      "Built a calendar-based system to monitor and maintain day-wise tiffin counts.",
+      "Integrated frontend and backend with React, Node.js, and MongoDB-based storage.",
     ],
   },
   {
-    title: "Moggu",
-    href: "https://github.com/Aditya-1304/moggu",
-    date: "August 2025",
-    stack: ["Rust", "Ratatui", "Crossterm", "Tokio", "Image Crate"],
+    title: "Jewellery Website",
+    href: "#",
+    date: "Jul 2025 - Aug 2025",
+    stack: ["HTML", "CSS", "Bootstrap"],
     summary:
-      "Ultra-fast terminal image processing tool with pro filters and sub-200ms workflow.",
+      "A responsive jewellery website developed during vocational training.",
     points: [
-      "21+ filters across color, enhancement, artistic, and geometric operations.",
-      "Inline terminal preview support (chafa/viu) with responsive TUI and async file flow.",
-    ],
-  },
-  {
-    title: "Pump.fun Indexer",
-    href: "https://github.com/Aditya-1304/pumpfun_indexer",
-    date: "Oct 2025",
-    stack: ["Solana", "Rust", "Tokio", "Redis", "SQLx"],
-    summary:
-      "Low-latency event indexer for Pump.fun market activity on Solana.",
-    points: [
-      "Custom Borsh parser for CREATE, TRADE, and COMPLETE events.",
-      "Dual storage path: PostgreSQL persistence + Redis Pub/Sub real-time stream.",
-    ],
-  },
-  {
-    title: "Solana AI Agent",
-    href: "https://github.com/Aditya-1304/solana-sdk",
-    date: "Apr 2025 - Jun 2025",
-    stack: ["Rust", "Anchor", "TypeScript", "Solana Web3.js"],
-    summary:
-      "Intent-to-transaction engine that maps natural language to Solana actions.",
-    points: [
-      "Modular action mapping for swaps, transfers, and token instructions.",
-      "Plugin-ready architecture for AMM integrations and strategy extensions.",
+      "Designed a mobile-friendly layout using Bootstrap grid system and containers.",
+      "Implemented responsive behavior across screen sizes and devices.",
     ],
   },
 ];
 
 export const blogs: BlogEntry[] = [
   {
-    title: "How Rust Uses Memory Behind the Scenes",
-    href: "https://medium.com/@mandaladitya1614/how-rust-uses-memory-behind-the-scenes-062c7d16bf02",
-    source: "Medium",
-    role: "Technical deep dive",
-    stack: ["Rust", "Memory", "Ownership", "Systems"],
-    summary:
-      "A practical breakdown of how Rust handles memory safety and performance under the hood.",
-    points: [
-      "Explains stack vs heap allocation and Rust ownership flow.",
-      "Covers borrowing, lifetimes, and how safety works without a GC.",
-    ],
+    title: "Blog Title",
+    href: "#",
+    source: "Platform",
+    role: "Article type",
+    stack: ["Topic 1", "Topic 2"],
+    summary: "Add your blog summary here.",
+    points: ["Add takeaway 1.", "Add takeaway 2."],
   },
 ];
 
 export const experience: ExperienceEntry[] = [
   {
-    title: "Open Source Contributor",
-    org: "Helius Rust SDK",
-    role: "Helius, Remote",
+    title: "Web Development Trainee",
+    org: "Skyvo Technologies Pvt Ltd",
+    role: "Raipur, In-office",
     points: [
-      "Implemented getTransactionsForAddress in the Helius Rust SDK for historical transaction querying.",
-      "Added integration tests and docs to keep behavior aligned with Helius API contracts.",
+      "Learned and worked with Angular framework to develop basic web application components.",
+      "Built small projects implementing frontend features, component structure, and responsive UI.",
     ],
   },
   {
-    title: "Solana Smart Contract Freelancer",
-    org: "Multiple Clients",
-    role: "Remote",
+    title: "Web Development Intern",
+    org: "Acedemor",
+    role: "Delhi, Online",
     points: [
-      "Built a validator bidding platform with secure SPL-token transfers and Merkle whitelist logic.",
-      "Collaborated on an RFP-generating agent with LangChain to reduce proposal drafting time.",
+      "Learned fundamentals of MongoDB, Express.js, React.js, and Node.js during the internship program.",
+      "Developed a small full-stack web project implementing basic CRUD operations and frontend-backend integration.",
     ],
   },
 ];
@@ -173,58 +146,77 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "languages",
     chips: [
-      "Rust",
       "C/C++",
-      "SQL (Postgres)",
-      "NoSQL",
-      "JavaScript/TypeScript",
-      "HTML/CSS",
+      "Python",
+      "Java",
+      "JavaScript",
+      "PHP",
+      "SQL",
+      "Dart",
     ],
   },
   {
     title: "frameworks",
-    chips: ["Anchor", "React", "Node.js", "Next.js"],
+    chips: ["React", "Node.js", "Flutter", "Flask", "Bootstrap"],
   },
   {
-    title: "blockchain",
-    chips: ["Solana", "Tokio", "Helius RPC", "Axum", "Actix"],
+    title: "core competencies",
+    chips: [
+      "Data Structures & Algorithms",
+      "Object-Oriented Programming",
+      "Database Design",
+      "Operating Systems",
+      "Computer Networks",
+      "System Architecture",
+      "Full-Stack Development",
+      "Cloud Computing",
+    ],
   },
   {
     title: "infra",
-    chips: ["Docker", "Git", "Redis"],
+    chips: [
+      "Git",
+      "Linux",
+      "MySQL",
+      "RESTful APIs",
+      "Google Cloud Platform",
+      "Android Studio",
+      "VS Code",
+      "Arduino",
+    ],
   },
 ];
 
 export const footerLinks: SocialLink[] = [
   {
     label: "email",
-    href: "mailto:mandaladitya1614@gmail.com",
+    href: "mailto:shreyanshgolchha1112@gmail.com",
   },
   {
     label: "github",
-    href: "https://github.com/Aditya-1304",
+    href: "https://github.com/ShreyanshGolchha01",
     external: true,
   },
   {
     label: "linkedin",
-    href: "https://www.linkedin.com/in/aditya-mandal1304/",
+    href: "https://www.linkedin.com/in/shreyansh-golchha-04113816b/",
     external: true,
   },
   {
     label: "x",
-    href: "https://x.com/AdityaMandal_",
+    href: "https://x.com/ShreyanshGolch5",
     external: true,
   },
   {
     label: "discord",
-    href: "https://discord.com/users/641275206324977664",
-    external: true,
+    href: "#discord",
+    copyValue: "508519391831523328",
   },
 ];
 
-export const resumeUrl =
-  "https://drive.google.com/file/d/1dtaCC-Gs6WchlqW27Xw54irT_CxEfC2R/view";
+export const resumeUrl = "https://shreyanshgolchha.me/resume.pdf";
 
-export const githubProfileUrl = "https://github.com/Aditya-1304";
+export const githubProfileUrl = "https://github.com/ShreyanshGolchha01";
 
-export const githubUser = "Aditya-1304";
+export const githubUser = "ShreyanshGolchha01";
+

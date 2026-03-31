@@ -1,5 +1,4 @@
 import {
-  blogs,
   experience,
   footerLinks,
   githubProfileUrl,
@@ -9,6 +8,7 @@ import {
   resumeUrl,
   skillGroups,
 } from "@/components/portfolio/data";
+import { FooterActions } from "@/components/portfolio/footer-actions";
 import { GithubGraphImage } from "@/components/portfolio/github-graph-image";
 import { SillyStatsPanel } from "@/components/portfolio/silly-stats-panel";
 
@@ -33,17 +33,17 @@ export function HomeContent() {
               <span>2026</span>
             </p>
             <h1 className="hero-name">
-              <span>Aditya Mandal</span>
+              <span>Shreyansh Golchha</span>
             </h1>
             <p className="hero-about">
-              <span>Backend and Solana smart contract engineer.</span>
+              <span>Full-stack developer crafting fast, reliable digital products.</span>
             </p>
-            <p className="hero-subline">cs @ sppu · i learn and build stuff.</p>
+            <p className="hero-subline">Building digital experiences that matter.</p>
 
             <div className="hero-status">
               <span className="status-dot" aria-hidden="true" />
-              <span>Available for opportunities</span>
-              <span className="status-pill">Remote</span>
+              <span>Open to exciting opportunities</span>
+              <span className="status-pill">Open to Work</span>
             </div>
 
             <div className="hero-links-plain">
@@ -105,50 +105,6 @@ export function HomeContent() {
         </div>
       </section>
 
-      <section id="blogs" className="panel projects-panel" data-reveal>
-        <div className="panel-head projects-head">
-          <p className="label">blogs</p>
-          <a className="panel-link projects-cta" href="/blogs">
-            see more ↗
-          </a>
-        </div>
-
-        <p className="blogs-note">
-          i sometimes writes about what i learned (more coming soon).
-        </p>
-
-        <div className="blogs-grid">
-          {blogs.map((blog) => (
-            <article key={blog.href} className="project-card">
-              <div className="project-top">
-                <a href={blog.href} className="project-title" {...externalProps}>
-                  {blog.title} <span>↗</span>
-                </a>
-                <p className="project-date">{blog.source}</p>
-              </div>
-
-              <p className="entry-role">{blog.role}</p>
-
-              <div className="project-stack">
-                {blog.stack.map((tag) => (
-                  <span key={`${blog.title}-${tag}`} className="stack-chip">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <p className="project-summary">{blog.summary}</p>
-
-              <ul className="project-points">
-                {blog.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section id="experience" className="panel" data-reveal>
         <div className="panel-head">
           <p className="label">experience</p>
@@ -200,12 +156,8 @@ export function HomeContent() {
 
       <section id="github-graph" className="panel github-panel" data-reveal>
         <div className="panel-head">
-          <p className="label">github commit graph</p>
-          <a
-            className="panel-link projects-cta"
-            href={githubProfileUrl}
-            {...externalProps}
-          >
+          <p className="label">activity graph</p>
+          <a className="panel-link projects-cta" href={githubProfileUrl} {...externalProps}>
             open github ↗
           </a>
         </div>
@@ -219,23 +171,12 @@ export function HomeContent() {
         <div className="footer-pro-left">
           <p className="footer-kicker">contact</p>
           <p className="footer-title">
-            Open to internships, freelance work, and collaborations.
+            Available for internships, freelance projects, and collaborations.
           </p>
-          <p className="footer-meta">© 2026 Aditya Mandal.</p>
+          <p className="footer-meta">© 2026 Shreyansh Golchha.</p>
         </div>
 
-        <div className="footer-actions">
-          {footerLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              {...(link.external ? externalProps : {})}
-            >
-              {link.label}
-              {link.label === "discord" ? " ↗" : ""}
-            </a>
-          ))}
-        </div>
+        <FooterActions links={footerLinks} />
       </footer>
     </main>
   );

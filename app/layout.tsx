@@ -6,34 +6,33 @@ import { SiteEffects } from "@/components/runtime/site-effects";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.adityamandal.tech"),
-  title: "Aditya Mandal | Portfolio",
-  description:
-    "Software engineer focused on systems, performance, and blockchain infrastructure.",
-  authors: [{ name: "Aditya Mandal" }],
+  metadataBase: new URL("https://example.com"),
+  title: "Shreyansh Golchha | Portfolio",
+  description: "Full-stack developer building meaningful digital experiences.",
+  authors: [{ name: "Shreyansh Golchha" }],
   icons: {
-    icon: "/favicon.ico",
+    icon: [{ url: "/favicon.svg?v=3", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg?v=3",
+    apple: "/favicon.svg?v=3",
   },
   openGraph: {
     type: "website",
-    url: "https://www.adityamandal.tech/",
-    title: "Aditya Mandal | Portfolio",
-    description:
-      "Software engineer focused on systems, performance, and blockchain infrastructure.",
+    url: "https://example.com/",
+    title: "Shreyansh Golchha | Portfolio",
+    description: "Full-stack developer building meaningful digital experiences.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Aditya Mandal Portfolio",
+        alt: "Portfolio cover image",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aditya Mandal | Portfolio",
-    description:
-      "Software engineer focused on systems, performance, and blockchain infrastructure.",
+    title: "Shreyansh Golchha | Portfolio",
+    description: "Full-stack developer building meaningful digital experiences.",
     images: ["/og-image.jpg"],
   },
 };
