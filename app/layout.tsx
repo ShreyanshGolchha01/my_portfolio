@@ -6,7 +6,10 @@ import { SiteEffects } from "@/components/runtime/site-effects";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://shreyanshgolchha.me"),
+  alternates: {
+    canonical: "https://shreyanshgolchha.me/",
+  },
   title: "Shreyansh Golchha | Portfolio",
   description: "Full-stack developer building meaningful digital experiences.",
   authors: [{ name: "Shreyansh Golchha" }],
@@ -17,12 +20,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://example.com/",
+    url: "https://shreyanshgolchha.me/",
     title: "Shreyansh Golchha | Portfolio",
     description: "Full-stack developer building meaningful digital experiences.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.jpg?v=2",
         width: 1200,
         height: 630,
         alt: "Portfolio cover image",
@@ -33,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Shreyansh Golchha | Portfolio",
     description: "Full-stack developer building meaningful digital experiences.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.jpg?v=2"],
   },
 };
 

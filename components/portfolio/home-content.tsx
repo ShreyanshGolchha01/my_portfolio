@@ -56,6 +56,9 @@ export function HomeContent() {
                   {link.label} ↗
                 </a>
               ))}
+              <a href={resumeUrl} {...externalProps}>
+                resume ↗
+              </a>
             </div>
           </div>
 
