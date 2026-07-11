@@ -1,34 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Portfolio
+
+A personal developer portfolio website built with **Next.js (App Router)**, **TypeScript**, and **React**.
+
+## Project Description
+
+This project is a responsive portfolio site that showcases profile information, projects, blogs, GitHub activity visuals, and personal stats in a clean single-page experience. The home page is rendered via modular components under `components/portfolio`, making the UI easy to maintain and extend.
+
+## Tech Stack
+
+- Next.js `16.1.6`
+- React `19.2.3`
+- TypeScript
+- ESLint
+
+## Features
+
+- Component-based portfolio layout
+- Dedicated content modules for:
+  - Home content
+  - Blogs content
+  - Footer actions
+  - Site header
+  - GitHub graph image section
+  - Stats panel
+- Centralized portfolio data file (`components/portfolio/data.ts`)
+
+## Project Structure
+
+```text
+.
+├── app/
+│   └── page.tsx
+├── components/
+│   └── portfolio/
+│       ├── blogs-content.tsx
+│       ├── data.ts
+│       ├── footer-actions.tsx
+│       ├── github-graph-image.tsx
+│       ├── home-content.tsx
+│       ├── silly-stats-panel.tsx
+│       └── site-header.tsx
+├── public/
+├── package.json
+└── tsconfig.json
+```
 
 ## Getting Started
 
-First, run the development server:
+### 1) Install dependencies
+
+```bash
+npm install
+```
+
+### 2) Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-## Learn More
+- `npm run dev` — Start development server
+- `npm run build` — Build for production
+- `npm run start` — Start production server
+- `npm run lint` — Run lint checks
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+You can deploy this Next.js application on any platform that supports Node.js, such as Vercel.
