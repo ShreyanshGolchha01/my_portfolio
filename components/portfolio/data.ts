@@ -60,6 +60,18 @@ export const profileLinks: SocialLink[] = [
 
 export const projects: Project[] = [
   {
+    title: "Gifting – Multi-Vendor E-commerce Platform",
+    href: "https://emilogifting.in/",
+    date: "Jun 2026 - Ongoing",
+    stack: ["React", "Prisma", "PostgreSQL", "Express.js","NATS"],
+    summary:
+      "A multi-vendor e-commerce platform focused on integrated gifting, vendor management, and scalable commerce operations.",
+    points: [
+      "Contributed to vendor onboarding, catalog management, and core multi-vendor e-commerce platform features.",
+      "Implemented feature enhancements, resolved application bugs, and supported ONDC integration and end-to-end testing.",
+    ],
+  },
+  {
     title: "SkillBridge",
     href: "#",
     date: "Jan 2026 - Ongoing",
@@ -123,6 +135,24 @@ export const blogs: BlogEntry[] = [
 
 export const experience: ExperienceEntry[] = [
   {
+    title: "Software Developer & Content Moderation Intern",
+    org: "Emilo Ventures Private Limited",
+    role: "Raipur · 2026 – present",
+    points: [
+      "Developing and enhancing a full-stack e-commerce platform, implementing key modules, features and backend integrations while actively debugging and resolving application issues",
+      "Working on ONDC integration and end-to-end flow testing, identifying and tracking bugs, and managing development tasks and issue progress throughJira",
+    ],
+  },
+  {
+    title: "Lead Full Stack Developer",
+    org: "COE — Center of Excellence, SSIPMT",
+    role: "Raipur · 2025 – present",
+    points: [
+      "Developed government-facing web and mobile applications as part of the college's tech club, handling end-to-end frontend and backend development.",
+      "Built production-ready projects across web and app platforms using modern full-stack technologies for real-world use cases.",
+    ],
+  },
+  {
     title: "Web Development Trainee",
     org: "Skyvo Technologies Pvt Ltd",
     role: "Raipur, In-office",
@@ -150,20 +180,20 @@ export const skillGroups: SkillGroup[] = [
       "Python",
       "Java",
       "JavaScript",
-      "PHP",
       "SQL",
       "Dart",
     ],
   },
   {
     title: "frameworks",
-    chips: ["React", "Node.js", "Flutter", "Flask", "Bootstrap"],
+    chips: ["React","Express.js", "Node.js", "Flutter", "Prisma", "Bootstrap"],
   },
   {
     title: "core competencies",
     chips: [
       "Data Structures & Algorithms",
-      "Object-Oriented Programming",
+      "Microservices",
+      "Basic Server Administration",
       "Database Design",
       "Operating Systems",
       "Computer Networks",
@@ -179,6 +209,12 @@ export const skillGroups: SkillGroup[] = [
       "Linux",
       "MySQL",
       "RESTful APIs",
+      "NATS",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "DigitalOcean",
+      "Rocky Linux",
       "Google Cloud Platform",
       "Android Studio",
       "VS Code",

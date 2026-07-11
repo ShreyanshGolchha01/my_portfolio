@@ -42,7 +42,7 @@ export function SiteHeader() {
       <div className="nav-inner">
         <Link className="nav-brand" href="/#top" onClick={onBrandClick}>
           <Image
-            src="/me_nobg.png"
+            src="/shreyansh_image.png"
             alt=""
             width={30}
             height={30}
