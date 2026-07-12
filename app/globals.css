@@ -36,3 +36,239 @@ header.site-nav nav.nav-menu .nav-list{flex-direction:column!important;align-ite
 header.site-nav.mobile-open nav.nav-menu .nav-list{display:flex!important}
 header.site-nav nav.nav-menu .nav-list a{width:100%!important;border-radius:10px!important;padding:.5rem .6rem!important;display:block!important}
 }
+
+/* Experience section: 2-column grid layout */
+#experience .stack {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+/* Mobile: single column for experience */
+@media(max-width:840px) {
+  #experience .stack {
+    grid-template-columns: 1fr;
+    gap: 0.78rem;
+  }
+}
+
+/* Enhanced experience cards styling */
+#experience .entry {
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #0a080642 0%, #16140f5a 100%);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#experience .entry:hover {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, #0a080680 0%, #1f1b129a 100%);
+  box-shadow: 0 0 20px rgba(255, 213, 79, 0.15);
+  transform: translateY(-2px);
+}
+
+#experience .entry:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#experience .entry:hover:before {
+  opacity: 1;
+}
+
+#experience .entry-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+#experience .entry-org {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+#experience .entry-role {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Mobile: single column for experience */
+@media(max-width:840px) {
+  #experience .stack {
+    grid-template-columns: 1fr;
+    gap: 0.78rem;
+  }
+}
+
+/* Enhanced project cards styling */
+#projects .project-card {
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #0a080642 0%, #16140f5a 100%);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#projects .project-card:hover {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, #0a080680 0%, #1f1b129a 100%);
+  box-shadow: 0 0 20px rgba(255, 213, 79, 0.15);
+  transform: translateY(-2px);
+}
+
+#projects .project-card:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#projects .project-card:hover:before {
+  opacity: 1;
+}
+
+#projects .project-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+#projects .project-card:hover .project-title {
+  color: var(--accent);
+}
+
+/* Enhanced skills chips styling */
+.chip {
+  border: 1px solid var(--stroke);
+  background: #16140f80;
+  color: var(--text);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  background: #16140fcc;
+  color: var(--accent);
+  box-shadow: 0 0 12px rgba(255, 213, 79, 0.2);
+  transform: translateY(-1px);
+}
+
+
+/* Enhanced silly stats panel styling */
+#silly-stats-content {
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0a080642 0%, #16140f5a 100%);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+#silly-stats-content:hover {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, #0a080680 0%, #1f1b129a 100%);
+  box-shadow: 0 0 20px rgba(255, 213, 79, 0.15);
+}
+
+/* Enhanced activity graph panel */
+#github-graph {
+  position: relative;
+}
+
+#github-graph .panel-head {
+  margin-bottom: 1.2rem;
+}
+
+#github-graph .graph-frame {
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #0a080642 0%, #16140f5a 100%);
+  transition: all 0.3s ease;
+}
+
+#github-graph .graph-frame:hover {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, #0a080680 0%, #1f1b129a 100%);
+  box-shadow: 0 0 20px rgba(255, 213, 79, 0.15);
+}
+
+/* Enhanced panel links (buttons) styling */
+.panel-link {
+  border: 1px solid var(--stroke);
+  color: var(--text);
+  background: #16140f80;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.panel-link:hover {
+  border-color: var(--accent);
+  background: #16140fcc;
+  color: var(--accent);
+  box-shadow: 0 0 12px rgba(255, 213, 79, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Enhanced hero links buttons */
+.hero-links-plain a {
+  border: 1px solid var(--stroke);
+  color: var(--text);
+  background: #16140f9e;
+  border-radius: 999px;
+  padding: 0.38rem 0.66rem;
+  font-size: 0.84rem;
+  transition: all 0.2s ease;
+}
+
+.hero-links-plain a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: #1f1b12e6;
+  box-shadow: 0 0 15px rgba(255, 213, 79, 0.2);
+}
+
+
+/* Remove button styling from github graph link */
+#github-graph .panel-link {
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+#github-graph .panel-link:hover {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  color: var(--accent);
+}
+
