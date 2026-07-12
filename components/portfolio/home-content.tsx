@@ -56,7 +56,7 @@ export function HomeContent() {
                   {link.label} ↗
                 </a>
               ))}
-              <a href={resumeUrl} {...externalProps}>
+              <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
                 resume ↗
               </a>
             </div>
@@ -111,7 +111,7 @@ export function HomeContent() {
       <section id="experience" className="panel" data-reveal>
         <div className="panel-head">
           <p className="label">experience</p>
-          <a className="panel-link resume-cta" href={resumeUrl} {...externalProps}>
+          <a className="panel-link resume-cta" href={resumeUrl} target="_blank" rel="noopener noreferrer">
             view resume ↗
           </a>
         </div>

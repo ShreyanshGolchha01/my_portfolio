@@ -250,7 +250,7 @@ export const footerLinks: SocialLink[] = [
   },
 ];
 
-export const resumeUrl = "https://shreyanshgolchha.me/resume.pdf";
+export const resumeUrl = "/resume";
 
 export const githubProfileUrl = "https://github.com/ShreyanshGolchha01";
 
