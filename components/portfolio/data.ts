@@ -50,6 +50,12 @@ export type PortfolioData = {
   githubProfileUrl: string;
   githubUser: string;
   photoUrl?: string;
+  sillyStats?: {
+    clicks: number;
+    travelPx: number;
+    scrolls: number;
+    keys: number;
+  };
 };
 
 const dataFilePath = join(process.cwd(), "data.json");

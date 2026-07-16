@@ -28,14 +28,14 @@ function formatCompact(value: number) {
   return `${value}`;
 }
 
-export function SillyStatsPanel() {
+export function SillyStatsPanel({ initialStats }: { initialStats?: Stats }) {
   const mouseXRef = useRef(-1);
   const mouseYRef = useRef(-1);
   const mouseMoveTickRef = useRef(0);
   const mouseTravelBufferRef = useRef(0);
   const scrollTickRef = useRef(0);
 
-  const [viewStats, setViewStats] = useState<Stats>(DEFAULT_BASE);
+  const [viewStats, setViewStats] = useState<Stats>(initialStats || DEFAULT_BASE);
 
   const bumpPending = useCallback(
     (key: keyof Stats, increment: number) => {

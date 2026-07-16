@@ -19,6 +19,7 @@ export async function HomeContent() {
     resumeUrl,
     skillGroups,
     photoUrl,
+    sillyStats,
   } = await getPortfolioData();
 
   return (
@@ -162,7 +163,7 @@ export async function HomeContent() {
         </div>
       </section>
 
-      <SillyStatsPanel />
+      <SillyStatsPanel initialStats={sillyStats} />
 
       <section id="github-graph" className="panel github-panel" data-reveal>
         <div className="panel-head">
