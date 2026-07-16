@@ -1,13 +1,15 @@
 import Link from "next/link";
 
-import { blogs } from "@/components/portfolio/data";
+import { getPortfolioData } from "@/components/portfolio/data";
 
 const externalProps = {
   target: "_blank",
   rel: "noopener noreferrer",
 };
 
-export function BlogsContent() {
+export async function BlogsContent() {
+  const { blogs } = await getPortfolioData();
+
   return (
     <main className="page">
       <section id="top" className="panel projects-panel">

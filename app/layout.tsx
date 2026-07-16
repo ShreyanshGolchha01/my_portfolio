@@ -40,18 +40,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+import { getPortfolioData } from "@/components/portfolio/data";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const data = await getPortfolioData();
   return (
     <html lang="en">
       <body data-vision="clean">
         <div id="scroll-progress" className="scroll-progress" aria-hidden="true" />
         <div className="site-backdrop" aria-hidden="true" />
 
-        <SiteHeader />
+        <SiteHeader photoUrl={data.photoUrl} />
         {children}
 
         <button

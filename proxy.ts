@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const CANONICAL_HOST = "shreyanshgolchha.me";
-const ALLOWED_ROUTES = new Set(["/", "/resume"]);
+const ALLOWED_ROUTES = new Set(["/", "/resume", "/the-vault-room26"]);
 
 function normalizePath(pathname: string): string {
   if (pathname !== "/" && pathname.endsWith("/")) {

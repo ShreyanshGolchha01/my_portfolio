@@ -1,13 +1,4 @@
-import {
-  experience,
-  footerLinks,
-  githubProfileUrl,
-  githubUser,
-  profileLinks,
-  projects,
-  resumeUrl,
-  skillGroups,
-} from "@/components/portfolio/data";
+import { getPortfolioData } from "@/components/portfolio/data";
 import { FooterActions } from "@/components/portfolio/footer-actions";
 import { GithubGraphImage } from "@/components/portfolio/github-graph-image";
 import { SillyStatsPanel } from "@/components/portfolio/silly-stats-panel";
@@ -17,7 +8,19 @@ const externalProps = {
   rel: "noopener noreferrer",
 };
 
-export function HomeContent() {
+export async function HomeContent() {
+  const {
+    experience,
+    footerLinks,
+    githubProfileUrl,
+    githubUser,
+    profileLinks,
+    projects,
+    resumeUrl,
+    skillGroups,
+    photoUrl,
+  } = await getPortfolioData();
+
   return (
     <main className="page">
       <section
@@ -62,7 +65,11 @@ export function HomeContent() {
             </div>
           </div>
 
-          <div className="profile-ascii" aria-hidden="true" />
+          <div 
+            className="profile-ascii" 
+            aria-hidden="true" 
+            style={{ "--profile-image": `url(${photoUrl || '/shreyansh_image.png'})` } as React.CSSProperties}
+          />
         </div>
       </section>
 

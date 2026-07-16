@@ -1,3 +1,6 @@
+import { readFile, writeFile } from "fs/promises";
+import { join } from "path";
+
 export type SocialLink = {
   label: string;
   href: string;
@@ -36,223 +39,42 @@ export type SkillGroup = {
   chips: string[];
 };
 
-export const profileLinks: SocialLink[] = [
-  {
-    label: "github",
-    href: "https://github.com/ShreyanshGolchha01",
-    external: true,
-  },
-  {
-    label: "linkedin",
-    href: "https://www.linkedin.com/in/shreyansh-golchha-04113816b/",
-    external: true,
-  },
-  {
-    label: "x",
-    href: "https://x.com/ShreyanshGolch5",
-    external: true,
-  },
-  {
-    label: "email",
-    href: "mailto:shreyanshgolchha1112@gmail.com",
-  },
-];
+export type PortfolioData = {
+  profileLinks: SocialLink[];
+  projects: Project[];
+  blogs: BlogEntry[];
+  experience: ExperienceEntry[];
+  skillGroups: SkillGroup[];
+  footerLinks: SocialLink[];
+  resumeUrl: string;
+  githubProfileUrl: string;
+  githubUser: string;
+  photoUrl?: string;
+};
 
-export const projects: Project[] = [
-  {
-    title: "Gifting – Multi-Vendor E-commerce Platform",
-    href: "https://emilogifting.in/",
-    date: "Jun 2026 - Ongoing",
-    stack: ["React", "Prisma", "PostgreSQL", "Express.js","NATS"],
-    summary:
-      "A multi-vendor e-commerce platform focused on integrated gifting, vendor management, and scalable commerce operations.",
-    points: [
-      "Contributed to vendor onboarding, catalog management, and core multi-vendor e-commerce platform features.",
-      "Implemented feature enhancements, resolved application bugs, and supported ONDC integration and end-to-end testing.",
-    ],
-  },
-  {
-    title: "SkillBridge",
-    href: "#",
-    date: "Jan 2026 - Ongoing",
-    stack: ["React", "Node.js", "MongoDB", "Express.js"],
-    summary:
-      "A web platform connecting students and companies through freelance and internship opportunities.",
-    points: [
-      "Built a full-stack MERN application where students apply for roles and companies post requirements.",
-      "Implemented authentication, role-based access (student/company), and college-focused listings.",
-    ],
-  },
-  {
-    title: "Green Palna",
-    href: "https://gpy.ssipmt.in/admin/login",
-    date: "Apr 2025 - Jul 2025",
-    stack: ["Node.js", "Express.js", "Flutter", "SQL"],
-    summary:
-      "A government-focused platform promoting plantation awareness and environmental sustainability.",
-    points: [
-      "Developed participation and tracking flows for tree-plantation and structured green initiatives.",
-      "Implemented user engagement, data tracking, and awareness campaign features.",
-    ],
-  },
-  {
-    title: "TiffinHub",
-    href: "https://tiffinhub.live",
-    date: "Aug 2025 - Ongoing",
-    stack: ["Node.js", "Flutter", "React", "MongoDB"],
-    summary:
-      "A full-stack app for PG students to track and manage daily tiffin usage efficiently.",
-    points: [
-      "Built a calendar-based system to monitor and maintain day-wise tiffin counts.",
-      "Integrated frontend and backend with React, Node.js, and MongoDB-based storage.",
-    ],
-  },
-  {
-    title: "Jewellery Website",
-    href: "#",
-    date: "Jul 2025 - Aug 2025",
-    stack: ["HTML", "CSS", "Bootstrap"],
-    summary:
-      "A responsive jewellery website developed during vocational training.",
-    points: [
-      "Designed a mobile-friendly layout using Bootstrap grid system and containers.",
-      "Implemented responsive behavior across screen sizes and devices.",
-    ],
-  },
-];
+const dataFilePath = join(process.cwd(), "data.json");
 
-export const blogs: BlogEntry[] = [
-  {
-    title: "Blog Title",
-    href: "#",
-    source: "Platform",
-    role: "Article type",
-    stack: ["Topic 1", "Topic 2"],
-    summary: "Add your blog summary here.",
-    points: ["Add takeaway 1.", "Add takeaway 2."],
-  },
-];
+export async function getPortfolioData(): Promise<PortfolioData> {
+  try {
+    const fileContent = await readFile(dataFilePath, "utf-8");
+    return JSON.parse(fileContent) as PortfolioData;
+  } catch (error) {
+    console.error("Error reading data.json:", error);
+    // Return empty fallback if error
+    return {
+      profileLinks: [],
+      projects: [],
+      blogs: [],
+      experience: [],
+      skillGroups: [],
+      footerLinks: [],
+      resumeUrl: "",
+      githubProfileUrl: "",
+      githubUser: "",
+    };
+  }
+}
 
-export const experience: ExperienceEntry[] = [
-  {
-    title: "Software Developer & Content Moderation Intern",
-    org: "Emilo Ventures Private Limited",
-    role: "Raipur · 2026 – present",
-    points: [
-      "Developing and enhancing a full-stack e-commerce platform, implementing key modules, features and backend integrations while actively debugging and resolving application issues",
-      "Working on ONDC integration and end-to-end flow testing, identifying and tracking bugs, and managing development tasks and issue progress throughJira",
-    ],
-  },
-  {
-    title: "Lead Full Stack Developer",
-    org: "COE — Center of Excellence, SSIPMT",
-    role: "Raipur · 2025 – present",
-    points: [
-      "Developed government-facing web and mobile applications as part of the college's tech club, handling end-to-end frontend and backend development.",
-      "Built production-ready projects across web and app platforms using modern full-stack technologies for real-world use cases.",
-    ],
-  },
-  {
-    title: "Web Development Trainee",
-    org: "Skyvo Technologies Pvt Ltd",
-    role: "Raipur, In-office",
-    points: [
-      "Learned and worked with Angular framework to develop basic web application components.",
-      "Built small projects implementing frontend features, component structure, and responsive UI.",
-    ],
-  },
-  {
-    title: "Web Development Intern",
-    org: "Acedemor",
-    role: "Delhi, Online",
-    points: [
-      "Learned fundamentals of MongoDB, Express.js, React.js, and Node.js during the internship program.",
-      "Developed a small full-stack web project implementing basic CRUD operations and frontend-backend integration.",
-    ],
-  },
-];
-
-export const skillGroups: SkillGroup[] = [
-  {
-    title: "languages",
-    chips: [
-      "C/C++",
-      "Python",
-      "Java",
-      "JavaScript",
-      "SQL",
-      "Dart",
-    ],
-  },
-  {
-    title: "frameworks",
-    chips: ["React","Express.js", "Node.js", "Flutter", "Prisma", "Bootstrap"],
-  },
-  {
-    title: "core competencies",
-    chips: [
-      "Data Structures & Algorithms",
-      "Microservices",
-      "Basic Server Administration",
-      "Database Design",
-      "Operating Systems",
-      "Computer Networks",
-      "System Architecture",
-      "Full-Stack Development",
-      "Cloud Computing",
-    ],
-  },
-  {
-    title: "infra",
-    chips: [
-      "Git",
-      "Linux",
-      "MySQL",
-      "RESTful APIs",
-      "NATS",
-      "PostgreSQL",
-      "Redis",
-      "Docker",
-      "DigitalOcean",
-      "Rocky Linux",
-      "Google Cloud Platform",
-      "Android Studio",
-      "VS Code",
-      "Arduino",
-    ],
-  },
-];
-
-export const footerLinks: SocialLink[] = [
-  {
-    label: "email",
-    href: "mailto:shreyanshgolchha1112@gmail.com",
-  },
-  {
-    label: "github",
-    href: "https://github.com/ShreyanshGolchha01",
-    external: true,
-  },
-  {
-    label: "linkedin",
-    href: "https://www.linkedin.com/in/shreyansh-golchha-04113816b/",
-    external: true,
-  },
-  {
-    label: "x",
-    href: "https://x.com/ShreyanshGolch5",
-    external: true,
-  },
-  {
-    label: "discord",
-    href: "#discord",
-    copyValue: "508519391831523328",
-  },
-];
-
-export const resumeUrl = "/resume";
-
-export const githubProfileUrl = "https://github.com/ShreyanshGolchha01";
-
-export const githubUser = "ShreyanshGolchha01";
-
+export async function savePortfolioData(data: PortfolioData): Promise<void> {
+  await writeFile(dataFilePath, JSON.stringify(data, null, 2), "utf-8");
+}

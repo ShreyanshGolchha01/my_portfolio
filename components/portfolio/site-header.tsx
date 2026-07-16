@@ -12,7 +12,7 @@ const navLinks = [
   { label: "contact", href: "/#contact" },
 ];
 
-export function SiteHeader() {
+export function SiteHeader({ photoUrl }: { photoUrl?: string }) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -42,11 +42,12 @@ export function SiteHeader() {
       <div className="nav-inner">
         <Link className="nav-brand" href="/#top" onClick={onBrandClick}>
           <Image
-            src="/shreyansh_image.png"
+            src={photoUrl || "/shreyansh_image.png"}
             alt=""
             width={30}
             height={30}
             className="nav-logo"
+            unoptimized={true}
             aria-hidden
           />
           <span>shreyansh golchha</span>
