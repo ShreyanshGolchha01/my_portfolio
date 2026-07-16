@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
 import { join } from "path";
 import { getPortfolioData, savePortfolioData } from "@/components/portfolio/data";
+import { revalidatePath } from "next/cache";
 
 function isAuthenticated(request: NextRequest) {
   return request.cookies.get("admin_auth")?.value === "true";
@@ -48,6 +49,7 @@ export async function POST(request: NextRequest) {
       await savePortfolioData(data);
     }
 
+    revalidatePath("/");
     return NextResponse.json({ success: true, fileName });
   } catch (error) {
     console.error("Error uploading file:", error);
