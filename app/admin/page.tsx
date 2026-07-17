@@ -11,7 +11,12 @@ export default function AdminPage() {
   // Login State
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState("");
+  const [isOtpSent, setIsOtpSent] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showOtp, setShowOtp] = useState(false);
 
   // Editor State
   const [jsonText, setJsonText] = useState("");
@@ -56,8 +61,26 @@ export default function AdminPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isLoading) return;
     setLoginError("");
+    setIsLoading(true);
     
+    if (isOtpSent) {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ otp }),
+      });
+
+      if (res.ok) {
+        fetchData();
+      } else {
+        setLoginError("Invalid or expired OTP.");
+      }
+      setIsLoading(false);
+      return;
+    }
+
     const res = await fetch("/api/admin/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -65,10 +88,16 @@ export default function AdminPage() {
     });
 
     if (res.ok) {
-      fetchData();
+      const result = await res.json();
+      if (result.requiresOtp) {
+        setIsOtpSent(true);
+      } else {
+        fetchData();
+      }
     } else {
       setLoginError("Invalid credentials.");
     }
+    setIsLoading(false);
   };
 
   const requestConfirm = (message: string, onConfirm: () => void) => {
@@ -160,6 +189,8 @@ export default function AdminPage() {
         setIsAuthenticated(false);
         setUsername("");
         setPassword("");
+        setIsOtpSent(false);
+        setOtp("");
       }
     );
   };
@@ -191,24 +222,70 @@ export default function AdminPage() {
            <p className="hero-about" style={{ textAlign: 'center', width: '100%', fontSize: '0.9rem' }}>Restricted Access</p>
            
            <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: '1.2rem', marginTop: '2rem' }}>
-              <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                style={inputStyle}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                style={inputStyle}
-              />
+              {!isOtpSent ? (
+                <>
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    style={inputStyle}
+                  />
+                  <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      style={{ ...inputStyle, width: "100%", paddingRight: "2.5rem" }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={{ position: "absolute", right: "10px", background: "none", border: "none", color: "var(--muted)", cursor: "pointer", fontSize: "0.75rem", fontFamily: "var(--font-mono)" }}
+                    >
+                      {showPassword ? "Hide" : "Show"}
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p style={{ textAlign: "center", fontSize: "0.85rem", color: "var(--muted)" }}>
+                    An OTP has been sent to the admin email.
+                  </p>
+                  <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+                    <input
+                      type={showOtp ? "text" : "password"}
+                      placeholder="6-DIGIT OTP"
+                      value={otp}
+                      onChange={(e) => {
+                        const val = e.target.value.replace(/\D/g, '').slice(0, 6);
+                        setOtp(val);
+                      }}
+                      maxLength={6}
+                      style={{ ...inputStyle, width: "100%", paddingRight: "2.5rem", letterSpacing: "0.2em", textAlign: "center", fontSize: "1.1rem" }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowOtp(!showOtp)}
+                      style={{ position: "absolute", right: "10px", background: "none", border: "none", color: "var(--muted)", cursor: "pointer", fontSize: "0.75rem", fontFamily: "var(--font-mono)" }}
+                    >
+                      {showOtp ? "Hide" : "Show"}
+                    </button>
+                  </div>
+                </>
+              )}
               {loginError && <p style={{ color: "var(--accent-2)", margin: 0, fontFamily: 'var(--font-mono)', fontSize: '0.8rem', textAlign: 'center' }}>{loginError}</p>}
-              <button type="submit" className="button-link primary" style={{ justifyContent: 'center', marginTop: '0.5rem', padding: '0.7rem' }}>
-                Enter Vault ↗
-              </button>
+              <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
+                {isOtpSent && (
+                  <button type="button" onClick={() => { setIsOtpSent(false); setOtp(""); setLoginError(""); }} disabled={isLoading} className="button-link" style={{ flex: 1, justifyContent: 'center', padding: '0.7rem', background: 'transparent', border: '1px solid var(--stroke)', color: 'var(--text)' }}>
+                    ← Back
+                  </button>
+                )}
+                <button type="submit" disabled={isLoading} className="button-link primary" style={{ flex: 2, justifyContent: 'center', padding: '0.7rem', opacity: isLoading ? 0.7 : 1 }}>
+                  {isLoading ? "Wait..." : (isOtpSent ? "Verify OTP ↗" : "Send OTP ↗")}
+                </button>
+              </div>
            </form>
         </section>
       </main>

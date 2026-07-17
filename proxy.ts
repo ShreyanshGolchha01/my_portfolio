@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const CANONICAL_HOST = "shreyanshgolchha.me";
-const ALLOWED_ROUTES = new Set(["/", "/resume", "/the-vault-room26"]);
 
 function normalizePath(pathname: string): string {
   if (pathname !== "/" && pathname.endsWith("/")) {
     return pathname.slice(0, -1);
   }
-
   return pathname;
 }
 
@@ -25,14 +23,29 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(`https://${CANONICAL_HOST}/`, 308);
   }
 
-  if (!ALLOWED_ROUTES.has(pathname)) {
-    const redirectUrl = new URL("/", request.url);
+  const vaultRoute = process.env.ADMIN_VAULT_ROUTE || "/admin";
+  const resumeRoute = process.env.RESUME_ROUTE || "/resume";
+  const ALLOWED_ROUTES = new Set(["/", vaultRoute, resumeRoute]);
 
+  // Block direct access to the actual internal folder names if they differ from the env routes
+  if (
+    (pathname === "/admin" && vaultRoute !== "/admin") ||
+    (pathname === "/resume" && resumeRoute !== "/resume")
+  ) {
+    const redirectUrl = new URL("/", request.url);
     if (!isLocal) {
       redirectUrl.protocol = "https:";
       redirectUrl.host = CANONICAL_HOST;
     }
+    return NextResponse.redirect(redirectUrl, 308);
+  }
 
+  if (!ALLOWED_ROUTES.has(pathname)) {
+    const redirectUrl = new URL("/", request.url);
+    if (!isLocal) {
+      redirectUrl.protocol = "https:";
+      redirectUrl.host = CANONICAL_HOST;
+    }
     return NextResponse.redirect(redirectUrl, 308);
   }
 
