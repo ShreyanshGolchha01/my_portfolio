@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { saveOtp, verifyOtp, clearOtp } from "@/lib/otp";
 
 function generateOtp() {
@@ -7,26 +7,24 @@ function generateOtp() {
 }
 
 async function sendOtpEmail(otp: string) {
-  const { EMAIL_USER, EMAIL_APP_PASSWORD, ADMIN_EMAIL } = process.env;
+  const { RESEND_API_KEY, ADMIN_EMAIL } = process.env;
 
-  if (!EMAIL_USER || !EMAIL_APP_PASSWORD || !ADMIN_EMAIL) {
-    throw new Error("Missing email configuration in .env");
+  if (!RESEND_API_KEY || !ADMIN_EMAIL) {
+    throw new Error("Missing RESEND_API_KEY or ADMIN_EMAIL in .env");
   }
 
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: EMAIL_USER,
-      pass: EMAIL_APP_PASSWORD,
-    },
-  });
+  const resend = new Resend(RESEND_API_KEY);
 
-  await transporter.sendMail({
-    from: EMAIL_USER,
-    to: ADMIN_EMAIL,
+  const { data, error } = await resend.emails.send({
+    from: process.env.RESEND_FROM_EMAIL || "Vault <onboarding@resend.dev>",
+    to: [ADMIN_EMAIL],
     subject: "Vault Login OTP",
     text: `Your OTP for logging into the Vault is: ${otp}\n\nIt expires in 10 minutes.`,
   });
+
+  if (error) {
+    throw new Error(error.message);
+  }
 }
 
 export async function POST(request: NextRequest) {
